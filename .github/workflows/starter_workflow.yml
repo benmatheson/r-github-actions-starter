@@ -1,9 +1,10 @@
 # This template is a starter workflow to get the basics of R, R packages, and optional quarto installed
+
 name: Starter R workflow
 
 # Controls when the workflow will run - using a cronjob in this case
 on:
-  # Triggers the workflow on a schedule 
+  # Triggers the workflow on a schedule  - this runs at one minute past each hour.
     schedule:
       - cron:  "1, * * * *"
     workflow_dispatch:
@@ -17,25 +18,21 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
       steps:
-
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it - makes files accessible to this workflow
-
-      - uses: actions/checkout@v4
+        - uses: actions/checkout@v4
       
       #install R
-      - uses: r-lib/actions/setup-r@v2
-      with:
-        r-version: '4.5.0' #can specify the R version you want
+        - uses: r-lib/actions/setup-r@v2
+          with:
+            r-version: '4.5.0' #can specify the R version you want
+
         
-      - uses: r-lib/actions/setup-r-dependencies@v2
-      with:
-        cache-version: 1
-
-
-
+      #install dependencies in the "description" file 
+        - uses: r-lib/actions/setup-r-dependencies@v2
+          with:
+            cache-version: 1
 
     # option to install quarto and a quarto render step   
-
    
     # - uses: quarto-dev/quarto-actions/setup@v2
     #   with:
@@ -45,9 +42,9 @@ jobs:
     #   with:
     #     to: html
 
-      - name: Run the R script
-        run: |
-            Rscript "alaskacam.R"
+        - name: Run the R script
+          run: |
+            Rscript "my_script.R"
 
     # - name: Commit Data
     #   run: |
