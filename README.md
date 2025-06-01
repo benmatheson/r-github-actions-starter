@@ -1,12 +1,15 @@
-🤖 This repo incldues a basic starter template for running a Github action with R. 
+## ®️ 🤖 This repo incldues a basic starter template for running a Github action with R. 
 
-a few importact files that are used here: 
+This will install R, a list of packages, and provide options for installing and rendering quarto, as well as comitting data at the end of the workflow.
+
+### a few important files that are used here: 
 
 
 `description`  - lists the packages to install
 
 `my_script.R` - the R script that will be run
 
+---
 
 In the `.github/workflows/starter_workflow.yml` file, the following steps are taken. 
 
