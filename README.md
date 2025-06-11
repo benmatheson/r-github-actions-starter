@@ -1,13 +1,12 @@
-## ®️ 🤖 This repo incldues a basic starter template for running a Github action with R. 
+## 💻 🤖 This repo includes a basic starter template for running a Github action with R. 
 
 This will install R, a list of packages, and provide options for installing and rendering quarto, as well as comitting data at the end of the workflow.
 
 ### a few important files that are used here: 
 
+`description`  - lists the packages to install.
 
-`description`  - lists the packages to install
-
-`my_script.R` - the R script that will be run
+`my_script.R` - the R script that will be run.
 
 ---
 
@@ -35,12 +34,10 @@ jobs:
     run-r-script:
       runs-on: ubuntu-latest
       env:
-        VERY_SECRET_KEY: ${{ secrets.VERY_SECRET_KEY }}  ##create a secret if you need to use it in the code
+        VERY_SECRET_KEY: ${{ secrets.VERY_SECRET_KEY }}  ##create a secret if you need to use it in the code. 
 ```
 
-This creates a job called run-r-script. It runs on a linux ubunut-lasest (just the default). There is also a spot to add secret keys  that your script can access, such as an API key you want to keep secret. 
-
-
+This creates a job called run-r-script. It runs on a linux ubunut-lasest (just the default). There is also a spot to add secret keys that your script can access, such as an API key you want to keep secret. 
 
 
 ```
@@ -54,7 +51,6 @@ This creates a job called run-r-script. It runs on a linux ubunut-lasest (just t
 Next is the real work of the the action, creating the steps that run. The first one simply makes files in the repo accessbile to the action - something that doesn't come by default. 
 
 
-
 ```
       #install R
         - uses: r-lib/actions/setup-r@v2
@@ -63,7 +59,7 @@ Next is the real work of the the action, creating the steps that run. The first 
 
 ```
 
-here we "use" an action from R maintainers that does the critical step of installing R. The 'uses' keyword means it's some other action that you pull in. 
+here we "use" an action from R maintainers that does the critical step of installing R. The 'uses' keyword means it's some other action that you pull in. We'll use these for installing R, installing packages, and the optional quarto steps.
 
 
 
@@ -84,7 +80,7 @@ Next is speciflying and installing packages, again using an action that r-lib ha
    
     # - uses: quarto-dev/quarto-actions/setup@v2
     #   with:
-    #     version: 1.4.515 #set version here
+    #     version: 1.4.515 #set quarto version here
 
     # - uses: quarto-dev/quarto-actions/render@v2
     #   with:
@@ -104,8 +100,6 @@ Now that R and the packages are installed, the workflow can run the R script and
 
 
 
-
-
 ```
     # - name: Commit Data
     #   run: |
@@ -118,7 +112,7 @@ Now that R and the packages are installed, the workflow can run the R script and
 
 ```
 
-If you have output data or code changes or something that needs to be saved to teh repo, this step can accomplish that. 
+If you have output data or code changes or something that needs to be saved to the repo, this step can accomplish that. 
 
 
 
